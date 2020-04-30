@@ -1,0 +1,38 @@
+name: End to End Tests
+
+on: [push]
+
+jobs:
+  Cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run App
+      run: |
+        streamlit run app.py --server.headless True
+
+    - name: Cypress
+      uses: cypress-io/github-action@v1
+      with:
+        install: false
+        record: true
+        start: yarn start
+        wait-on: 'http://localhost:8501'
+      env:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        host: localhost
+        port: 8501
