@@ -11,7 +11,7 @@ describe("When running the DICOM webapp", () => {
       .then(fileContent => {
         cy.get('[data-baseweb="file-uploader"] > div')
           .first()
-          .upload(
+          .attachFile(
             { fileContent, fileName, mimeType: 'application/octet-stream', encoding: 'base64' },
             {
               force: true,
