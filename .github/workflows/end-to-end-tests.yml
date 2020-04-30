@@ -22,7 +22,7 @@ jobs:
 
     - name: Run App
       run: |
-        streamlit run app.py --server.headless True
+        streamlit run app.py --server.headless True &
 
     - name: Cypress
       uses: cypress-io/github-action@v1
