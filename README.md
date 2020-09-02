@@ -19,7 +19,7 @@ streamlit run app.py
 Install yarn by following the instructions at
 <https://classic.yarnpkg.com/en/docs/install/>.
 
-Install testing dependencies by running `yarn`. Open the Cypress app by 
+Install testing dependencies by running `yarn`. Open the Cypress app by
 running `yarn run cypress open`.
 
 In a separate terminal make sure to open your app by running:

@@ -37,13 +37,13 @@ Begin by uploading a DICOM file
 dicom_bytes = st.file_uploader("Upload DICOM file")
 
 if not dicom_bytes:
-    raise st.ScriptRunner.StopException()  
+    raise st.stop()  
 
 try:
     dicom_header = pydicom.read_file(dicom_bytes, force=True, stop_before_pixels=True)
 except:
     st.write(WrongFileType("Does not appear to be a DICOM file"))
-    raise st.ScriptRunner.StopException()
+    raise st.stop()
 
 """
 ## Filtering and Viewing the DICOM header
