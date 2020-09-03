@@ -34,7 +34,7 @@ This is a small example of the power of the `streamlit` library.
 Begin by uploading a DICOM file
 """
 
-dicom_bytes = st.file_uploader("Upload DICOM file")
+dicom_bytes = st.file_uploader("Upload DICOM file", encoding=None)
 
 if not dicom_bytes:
     raise st.stop()  
